@@ -7,35 +7,35 @@ import static org.junit.Assert.assertThat;
 public class MeasurementTest {
     @Test
     public void shouldReturnTheLengthInInches() {
-        Measurement measurement = new Measurement(1, "inches");
-        assertThat(measurement, is(new Measurement(1, "inches")));
+        Measurement measurement = new Measurement(1, Unit.INCHES);
+        assertThat(measurement, is(new Measurement(1, Unit.INCHES)));
     }
 
     @Test
     public void shouldNotBeEqualFor2DifferentMeasurements() {
-        Measurement measurementInInches = new Measurement(10, "inches");
-        Measurement measurementInYards = new Measurement(10, "yards");
+        Measurement measurementInInches = new Measurement(10, Unit.INCHES);
+        Measurement measurementInYards = new Measurement(10, Unit.YARDS);
         Assert.assertNotEquals(measurementInInches, measurementInYards);
     }
 
     @Test
     public void shouldAdd2Measurements() {
-        Measurement measurement = new Measurement(10, "inches");
+        Measurement measurement = new Measurement(10, Unit.INCHES);
 
-        Measurement addition = measurement.add(new Measurement(12, "inches"));
+        Measurement addition = measurement.add(new Measurement(12, Unit.INCHES));
 
-        assertThat(new Measurement(22, "inches"), is(addition));
+        assertThat(new Measurement(22, Unit.INCHES), is(addition));
     }
 
     @Test
     public void shouldAdd2DifferentMeasurements() {
-        Measurement measurement = new Measurement(1, "inches");
+        Measurement measurement = new Measurement(1, Unit.INCHES);
 
-        Measurement additionBetweenInchesAndYards = measurement.add(new Measurement(1, "yards"));
+        Measurement additionBetweenInchesAndYards = measurement.add(new Measurement(1, Unit.YARDS));
 
-        assertThat(additionBetweenInchesAndYards, is(new Measurement(37, "inches")));
+        assertThat(additionBetweenInchesAndYards, is(new Measurement(37, Unit.INCHES)));
 
-        assertThat(measurement.add(new Measurement(1,"feet")),is(new Measurement(13,"inches")));
+        assertThat(measurement.add(new Measurement(1,Unit.FEET)),is(new Measurement(13,Unit.INCHES)));
     }
 
 }
